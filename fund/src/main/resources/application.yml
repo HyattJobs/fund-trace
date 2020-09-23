@@ -1,0 +1,21 @@
+server:
+  port: 9011
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://root:jk@peer1:9001/eureka/,http://root:jk@peer2:9002/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #因为springboot2.1必须加上,支持访问/actuator/hystrix.stream
+spring:
+  application:
+    name: fund
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: zkna
+    password: jk

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/db-data-engine/db-data-engine.iml" filepath="$PROJECT_DIR$/db-data-engine/db-data-engine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-zone/eureka-zone.iml" filepath="$PROJECT_DIR$/eureka-zone/eureka-zone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fund/fund.iml" filepath="$PROJECT_DIR$/fund/fund.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fund-trace.iml" filepath="$PROJECT_DIR$/fund-trace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-config/service-config.iml" filepath="$PROJECT_DIR$/service-config/service-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-monitor/service-monitor.iml" filepath="$PROJECT_DIR$/service-monitor/service-monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sidecar-service/sidecar-service.iml" filepath="$PROJECT_DIR$/sidecar-service/sidecar-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zuul-route/zuul-route.iml" filepath="$PROJECT_DIR$/zuul-route/zuul-route.iml" />
+    </modules>
+  </component>
+</project>

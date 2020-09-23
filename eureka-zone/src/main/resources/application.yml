@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: eureka-zone
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    initial-instance-info-replication-interval-seconds: 30
+  server:
+    # 关闭自我保护
+    enable-self-preservation: false
+    # 清理服务器
+    eviction-interval-timer-in-ms: 1500
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #因为springboot2.1必须加上,支持访问/actuator/hystrix.stream
+---
+spring:
+  profiles: peer1
+  security:
+    user:
+      name: root
+      password: jk
+server:
+  port: 9001
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    service-url:
+      defaultZone: http://root:jk@peer2:9002/eureka/
+---
+spring:
+  profiles: peer2
+  security:
+    user:
+      name: root
+      password: jk
+server:
+  port: 9002
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    service-url:
+      defaultZone: http://root:jk@peer1:9001/eureka/
