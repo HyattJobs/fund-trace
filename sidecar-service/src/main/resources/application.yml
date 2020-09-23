@@ -1,0 +1,20 @@
+server:
+  port: 9051
+spring:
+  application:
+    name: sidecar-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:jk@peer1:9001/eureka/,http://root:jk@peer2:9002/eureka/
+#  instance:
+#    prefer-ip-address: true
+sidecar:
+  port: 9052
+  health-uri: http://localhost:9052/health.json
+#  home-page-uri: http://localhost:9052
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #因为springboot2.1必须加上,支持访问/actuator/hystrix.stream
