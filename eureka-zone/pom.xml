@@ -79,11 +79,6 @@
                 <version>${docker-maven-plugin.version}</version>
 
                 <configuration>
-                    <settings>
-                        <pluginGroups>
-                            <pluginGroup>com.spotify</pluginGroup>
-                        </pluginGroups>
-                    </settings>
                     <imageName>bestliuxingtang/${project.artifactId}:${project.version}</imageName>
                     <forceTags>true</forceTags>
                     <baseImage>java</baseImage>
