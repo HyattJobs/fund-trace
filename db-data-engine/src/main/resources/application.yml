@@ -60,6 +60,13 @@ spring:
         min-idle: 0
     ## 连接超时时间（毫秒）
     timeout: 1200
+  sleuth:
+    integration:
+      enabled: true
+    sampler:
+      percentage: 1.0
+  zipkin:
+    base-url: http://localhost:9081
 #mybatis-plus:
 mybatis-plus:
   # xml??�k??????????????????????? Mapper ??????? XML ???��???
@@ -87,3 +94,19 @@ info:
     java:
       source: @java.version@
       target: @java.version@
+logging:
+  level:
+    root: INFO
+#    org.springframework.cloud.sleuth: DEBUG
+#    org.springframework.web.servlet.DispatcherServlet: DEBUG
+
+#jaeger 配置
+opentracing:
+  jaeger:
+    enabled: true
+    log-spans: true
+    const-sampler:
+      decision: true
+    udp-sender:
+      host: 192.168.247.132
+      port: 6831

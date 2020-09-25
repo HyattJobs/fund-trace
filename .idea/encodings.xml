@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/eureka-zone/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/fund/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service-config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service-jaeger/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service-monitor/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sidecar-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/zuul-route/src/main/java" charset="UTF-8" />

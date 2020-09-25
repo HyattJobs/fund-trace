@@ -3,13 +3,27 @@ server:
 spring:
   application:
     name: service-config
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: zkna
+    password: jk
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/HyattJobs/fund-trace-config.git
+          uri: https://github.com/HyattJobs/fund-trace.git
           search-paths: zfig-profiles
           clone-on-start: true
+#          repos:
+#            team-a:
+#              pattern: db-*,encryption*
+#              clone-on-start: true
+#              uri: https://github.com/HyattJobs/fund-trace.git
 eureka:
+  instance:
+    #    hostname: localhost
+    prefer-ip-address: true #ip to eureka server
   client:
-    enabled: false
+    service-url:
+      defaultZone: http://root:jk@peer1:9001/eureka/,http://root:jk@peer2:9002/eureka/

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 模型版本。maven2.0必须是这样写，现在是maven2唯一支持的版本 -->
+    <modelVersion>4.0.0</modelVersion>
 
+    <!-- 父项目的坐标 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -9,17 +12,49 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <modelVersion>4.0.0</modelVersion>
+    <!-- 模块（有时称作子项目） 被构建成项目的一部分 . 列出的每个模块元素是指向该模块的目录的相对路径 -->
+    <modules>
+        <module>fund</module>
+        <module>db-data-engine</module>
+        <module>eureka-zone</module>
+        <module>zuul-route</module>
+
+        <module>service-monitor</module>
+        <module>service-config</module>
+        <!-- 扩展项目 -->
+        <module>service-jaeger</module>
+
+        <module>sidecar-service</module>
+    </modules>
+    <!-- 公司或者组织的唯一标志，并且配置时生成的路径也是由此生成， -->
     <groupId>com.zkna</groupId>
+    <!-- 本项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的 -->
     <artifactId>fund-trace</artifactId>
+    <!-- 本项目目前所处的版本号 -->
     <version>0.0.1-SNAPSHOT</version>
+    <!-- 项目的名称-->
     <name>fund-trace</name>
     <description>fund-trace</description>
+    <!-- 打包的机制，如pom,jar, maven-plugin, ejb, war, ear, rar, par，默认为jar -->
     <packaging>pom</packaging>
 
+    <!-- 以值替代名称 , Properties可以在整个POM中使用 , 也可以作为触发条件（见settings.xml配置文件里activation元素的说明） . 格式是<name>value</name> .  -->
     <properties>
-        <project.build.sourceEncoding>Utf-8</project.build.sourceEncoding>
         <java.version>14</java.version>
+        <project.build.sourceEncoding>Utf-8</project.build.sourceEncoding>
+
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <hutool-all.version>5.4.3</hutool-all.version>
+        <fastjson.version>1.2.73</fastjson.version>
+        <mybatis-plus.version>3.4.0</mybatis-plus.version>
+        <mariadb-driver.version>2.6.2</mariadb-driver.version>
+        <logstash.version>6.4</logstash.version>
+        <spring-druid.version>1.1.24</spring-druid.version>
+        <surefire.version>3.0.0-M5</surefire.version>
+        <zipkin-config.version>2.12.9</zipkin-config.version>
+        <zipkin-server.version>2.12.9</zipkin-server.version>
+        <jaeger.version>3.2.0</jaeger.version>
+        <docker-maven-plugin.version>1.2.2</docker-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -32,76 +67,69 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+        <!-- Hutool超级工具类 http://hutool.mydoc.io/ -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.4.3</version>
+            <version>${hutool-all.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.73</version>
+            <version>${fastjson.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-        <!--devtools热部署-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-devtools</artifactId>-->
-        <!--            <optional>true</optional>-->
-        <!--            <scope>true</scope>-->
-        <!--        </dependency>-->
+
+
+
     </dependencies>
 
+    <!--  继承自该项目的所有子项目的默认依赖信息 . 这部分的依赖信息不会被立即解析,而是当子项目声明一个依赖（必须描述group ID和 artifact ID信息） , 如果group ID和artifact ID以外的一些信息没有描述 , 则通过group ID和artifact ID 匹配到这里的依赖 , 并使用这里的依赖信息 .  -->
     <dependencyManagement>
         <dependencies>
+            <!-- spring cloud 依赖-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR8</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+<!--            &lt;!&ndash;devtools热部署&ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-devtools</artifactId>-->
+<!--                <optional>true</optional>-->
+<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
     <build>
         <defaultGoal>compile</defaultGoal>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-            </plugin>
-        </plugins>
     </build>
 
-    <modules>
-        <module>fund</module>
-        <module>db-data-engine</module>
-        <module>eureka-zone</module>
-        <module>zuul-route</module>
-        <module>service-monitor</module>
-        <module>sidecar-service</module>
-    </modules>
+    <!-- 项目开发者列表 -->
+    <developers>
+        <!-- 某个项目开发者的信息 -->
+        <developer>
+            <id>zkna</id><!-- SCM里项目开发者的唯一标识符 -->
+            <name>lxt</name><!-- 项目开发者的全名 -->
+            <email>718091951@qq.com</email><!-- 项目开发者的email -->
+            <url>https://github.com/HyattJobs/fund-trace</url><!-- 项目开发者的主页的URL -->
+            <!-- 项目开发者在项目中扮演的角色 , 角色元素描述了各种角色 -->
+            <roles>
+                <role>Manager</role>
+                <role>Test</role>
+                <role>Dev</role>
+            </roles>
+            <organization>zkna</organization><!-- 项目开发者所属组织 -->
+            <organizationUrl>https://github.com/HyattJobs</organizationUrl><!-- 项目开发者所属组织的URL -->
+            <!-- 项目开发者属性 , 如即时消息如何处理等 -->
+            <properties>
+                <dept>No</dept>
+            </properties>
+            <timezone>+8</timezone><!-- 项目开发者所在时区 ,  -11到12范围内的整数 .  -->
+        </developer>
+    </developers>
 
 </project>

@@ -7,7 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/fund/fund.iml" filepath="$PROJECT_DIR$/fund/fund.iml" />
       <module fileurl="file://$PROJECT_DIR$/fund-trace.iml" filepath="$PROJECT_DIR$/fund-trace.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-config/service-config.iml" filepath="$PROJECT_DIR$/service-config/service-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-jaeger/service-jaeger.iml" filepath="$PROJECT_DIR$/service-jaeger/service-jaeger.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-monitor/service-monitor.iml" filepath="$PROJECT_DIR$/service-monitor/service-monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-zipkin/service-zipkin.iml" filepath="$PROJECT_DIR$/service-zipkin/service-zipkin.iml" />
       <module fileurl="file://$PROJECT_DIR$/sidecar-service/sidecar-service.iml" filepath="$PROJECT_DIR$/sidecar-service/sidecar-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/zuul-route/zuul-route.iml" filepath="$PROJECT_DIR$/zuul-route/zuul-route.iml" />
     </modules>

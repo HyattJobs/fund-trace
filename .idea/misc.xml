@@ -16,6 +16,12 @@
         <option value="$PROJECT_DIR$/db-data-engine/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/service-zipkin-skywalking/pom.xml" />
+        <option value="$PROJECT_DIR$/service-zipkin/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="14" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

@@ -4,11 +4,14 @@ import com.google.common.collect.Maps;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.zkna.fund.entity.UserHandlerError;
 import com.zkna.fund.entity.User;
-import com.zkna.fund.feign.DbQueryFeignClient;
+import com.zkna.fund.feign.DbQueryFeignClientService;
 import com.zkna.fund.service.AggregationService;
+import io.micrometer.core.util.internal.logging.InternalLogger;
+import io.micrometer.core.util.internal.logging.InternalLoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,14 +30,16 @@ import java.util.List;
 @RestController
 public class UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
     @Resource
     private RestTemplate restTemplate;
 
     @Resource
     private LoadBalancerClient loadBalancerClient;
 
-    @Resource
-    private DbQueryFeignClient dbQueryFeignClient;
+
+    @Autowired
+    private DbQueryFeignClientService dbQueryFeignClient;
 
     //聚合服务
     @Autowired
@@ -45,6 +50,8 @@ public class UserController {
     public User findById(@PathVariable Long id) {
         //        User findOne = this.userRepository.restTemplate().getForObject("http://localhost:9011/userInfo/getInfo/"+id,User.class);
         //User findOne = this.restTemplate.getForObject("http://db-mysql/userInfo/getInfo/"+id,User.class);
+
+        LOGGER.debug("Logger---id"+id);
         return this.dbQueryFeignClient.findById(id);
     }
 
@@ -54,6 +61,7 @@ public class UserController {
         //        User findOne = this.userRepository.restTemplate().getForObject("http://localhost:9011/userInfo/getInfo/"+id,User.class);
 //        User findOne = this.restTemplate.getForObject("http://db-data-engine/userInfo/getInfo/1",User.class);
 //        System.out.println(findOne.getId());
+        LOGGER.debug("Logger---id"+id);
         return this.dbQueryFeignClient.tFindById(id);
     }
 

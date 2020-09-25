@@ -14,8 +14,20 @@ management:
 spring:
   application:
     name: fund
+  main:
+    allow-bean-definition-overriding: true
   rabbitmq:
     host: localhost
     port: 5672
     username: zkna
     password: jk
+#jaeger 配置
+opentracing:
+  jaeger:
+    enabled: true
+    log-spans: false
+    const-sampler:
+      decision: true
+    udp-sender:
+      host: 192.168.247.132
+      port: 6831

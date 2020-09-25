@@ -1,0 +1,1 @@
+keytool -genkeypair -alias configkey -keyalg RSA -dname "CN=Web Server,OU=Unit,O=Organization,L=City,S=State,C=US" -keypass zknajk -keystore server.jks -storepass zknajk

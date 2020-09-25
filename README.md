@@ -29,7 +29,8 @@ sideCar:9051
 sidecar-nodejs:9052
 sidecar-py:9061
 service-config:9071
-
+service-zipkin: 9081
+ Fetching config from server at : http://localhost:9071/
 #Redis
 ./src/redis-server redis.conf
 redis-cli.exe --cluster create 127.0.0.1:9501 127.0.0.1:9502 127.0.0.1:9503 127.0.0.1:9504 127.0.0.1:9505 127.0.0.1:9506 --cluster-replicas 1
@@ -37,8 +38,48 @@ redis-cli.exe --cluster create 127.0.0.1:9501 127.0.0.1:9502 127.0.0.1:9503 127.
 #nodejs
 node nodejs-service/Node-server.js
  
-#### 参与贡献
+ #docker-compose
+ curl -L "http://github.com/docker/compose/releases/download/1.27.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    curl -L "http://github.com/docker/compose/releases/download/1.27.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
+#
+```shell script
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+```
+docker stop $(docker ps -a -q)
+
+如果想要删除所有container的话再加一个指令：
+
+docker rm $(docker ps -a -q)
+
+semanage port -l | grep http_port_t
+
+semanage port -a -t http_port_t  -p tcp 6379
+
+mvn clean package docker:build
+```dockerfile
+FROM redis
+
+ENV REDIS_PORT 7000
+
+EXPOSE $REDIS_PORT
+
+COPY entrypoint.sh /usr/local/bin/
+COPY redis.conf /usr/local/etc/
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["redis-server", "/usr/local/etc/redis.conf"]
+```
+vim ~/.bashrc
+    PS1="\[\e[33;41m\][\u@\h \w]\$\[\e[0m\] "
+source ~/.bashrc
+
+docker run --rm -it inem0o/redis-trib create --replicas 1 192.168.247.132:8001 192.168.247.132:8002 192.168.247.132:8003 192.168.247.132:8004 192.168.247.132:8005 192.168.247.132:8006
+
+docker run -d --name jenkins -p 8080:8080 -v /home/jenkins:/home/jenkins jenkins/jenkins:lts
+
+#### 参与贡献
 1.  Fork 本仓库
 2.  新建 Feat_xxx 分支
 3.  提交代码
