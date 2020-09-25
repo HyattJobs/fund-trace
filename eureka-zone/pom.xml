@@ -71,12 +71,19 @@
 <!--                </configuration>-->
 <!--            </plugin>-->
 <!--            -->
+
             <plugin>
                 <!-- https://mvnrepository.com/artifact/com.spotify/docker-maven-plugin -->
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>${docker-maven-plugin.version}</version>
+
                 <configuration>
+                    <settings>
+                        <pluginGroups>
+                            <pluginGroup>com.spotify</pluginGroup>
+                        </pluginGroups>
+                    </settings>
                     <imageName>bestliuxingtang/${project.artifactId}:${project.version}</imageName>
                     <forceTags>true</forceTags>
                     <baseImage>java</baseImage>
@@ -89,8 +96,12 @@
                         </resource>
                     </resources>
                 </configuration>
+
             </plugin>
+
         </plugins>
+
     </build>
+
 
 </project>
