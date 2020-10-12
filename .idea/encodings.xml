@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+  <component name="Encoding">
     <file url="file://$PROJECT_DIR$/db-data-engine/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-zone/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/fund/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service-config/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service-jaeger/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service-monitor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service-oauth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service-system-info/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sidecar-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/system-info-test/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/zuul-route/src/main/java" charset="UTF-8" />
-    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

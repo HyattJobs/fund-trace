@@ -7,6 +7,7 @@ import com.zkna.dbdataengine.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,8 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
+    @Autowired
+    RedisTemplate redisTemplate;
     /**
      * 根据ID获取用户信息
      * @Author Sans
@@ -28,10 +31,16 @@ public class UserInfoController {
      * @Return UserInfoEntity 用户实体
      */
     @RequestMapping("/getInfo/{userId}")
-    @Cacheable(value = "UserInfoEntity",key = "'user_id_'+#userId",unless = "#result == null")
+    //@Cacheable(value = "UserInfoEntity",key = "'user_id_'+#userId",unless = "#result == null")
     public UserInfoEntity getInfo(@PathVariable Long userId){
-        System.out.println("uid:"+userId);
+        UserInfoEntity user2 = (UserInfoEntity) redisTemplate.opsForValue().get("user1");
+        if (user2 != null){
+            System.out.println("使用 redis 缓存");
+            return user2;
+        }
         UserInfoEntity userInfoEntity = userInfoService.getById(userId);
+        redisTemplate.opsForValue().set(userId, userInfoEntity);
+
         return userInfoEntity;
     }
     /**

@@ -9,36 +9,31 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>com.zkna</groupId>
-	<artifactId>service-jaeger</artifactId>
+	<artifactId>service-system-info</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>service-jaeger</name>
+	<name>service-system-info</name>
 	<description>Demo project for Spring Boot</description>
-	<packaging>jar</packaging>
 
 	<properties>
-		<project.build.sourceEncoding>Utf-8</project.build.sourceEncoding>
 		<java.version>14</java.version>
+		<project.build.sourceEncoding>Utf-8</project.build.sourceEncoding>
+
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/io.jaegertracing/jaeger-core -->
+		<!-- https://mvnrepository.com/artifact/org.fusesource/sigar -->
 		<dependency>
-			<groupId>io.jaegertracing</groupId>
-			<artifactId>jaeger-core</artifactId>
-			<version>1.4.0</version>
+			<groupId>org.fusesource</groupId>
+			<artifactId>sigar</artifactId>
+			<version>1.6.4</version>
 		</dependency>
 	</dependencies>
 
 	<build>
-		<defaultGoal>jar</defaultGoal>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

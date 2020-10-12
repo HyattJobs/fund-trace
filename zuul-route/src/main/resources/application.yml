@@ -3,11 +3,11 @@ server:
 spring:
   application:
     name: zuul-route
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: zkna
-    password: jk
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: zkna
+#    password: jk
 eureka:
   client:
     service-url:

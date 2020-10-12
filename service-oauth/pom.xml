@@ -8,37 +8,25 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<groupId>com.zkna</groupId>
-	<artifactId>service-jaeger</artifactId>
+
+	<artifactId>service-oauth</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>service-jaeger</name>
+	<name>service-oauth</name>
 	<description>Demo project for Spring Boot</description>
-	<packaging>jar</packaging>
 
 	<properties>
-		<project.build.sourceEncoding>Utf-8</project.build.sourceEncoding>
 		<java.version>14</java.version>
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/io.jaegertracing/jaeger-core -->
-		<dependency>
-			<groupId>io.jaegertracing</groupId>
-			<artifactId>jaeger-core</artifactId>
-			<version>1.4.0</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
-		<defaultGoal>jar</defaultGoal>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

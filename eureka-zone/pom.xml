@@ -71,7 +71,10 @@
 <!--                </configuration>-->
 <!--            </plugin>-->
 <!--            -->
-
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <!-- https://mvnrepository.com/artifact/com.spotify/docker-maven-plugin -->
                 <groupId>com.spotify</groupId>

@@ -9,8 +9,10 @@
       <module fileurl="file://$PROJECT_DIR$/service-config/service-config.iml" filepath="$PROJECT_DIR$/service-config/service-config.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-jaeger/service-jaeger.iml" filepath="$PROJECT_DIR$/service-jaeger/service-jaeger.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-monitor/service-monitor.iml" filepath="$PROJECT_DIR$/service-monitor/service-monitor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/service-zipkin/service-zipkin.iml" filepath="$PROJECT_DIR$/service-zipkin/service-zipkin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-oauth/service-oauth.iml" filepath="$PROJECT_DIR$/service-oauth/service-oauth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-system-info/service-system-info.iml" filepath="$PROJECT_DIR$/service-system-info/service-system-info.iml" />
       <module fileurl="file://$PROJECT_DIR$/sidecar-service/sidecar-service.iml" filepath="$PROJECT_DIR$/sidecar-service/sidecar-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/system-info-test/system-info-test.iml" filepath="$PROJECT_DIR$/system-info-test/system-info-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/zuul-route/zuul-route.iml" filepath="$PROJECT_DIR$/zuul-route/zuul-route.iml" />
     </modules>
   </component>

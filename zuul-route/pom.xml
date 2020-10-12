@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <groupId>com.zkna</groupId>
+
     <artifactId>zuul-route</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>zuul-route</name>

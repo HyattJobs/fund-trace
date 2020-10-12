@@ -10,7 +10,7 @@ eureka:
     # 关闭自我保护
     enable-self-preservation: false
     # 清理服务器
-    eviction-interval-timer-in-ms: 1500
+    eviction-interval-timer-in-ms: 10000
 management:
   endpoints:
     web:

@@ -21,10 +21,14 @@
 
         <module>service-monitor</module>
         <module>service-config</module>
+        <module>service-oauth</module>
+        <module>service-system-info</module>
+
         <!-- 扩展项目 -->
         <module>service-jaeger</module>
 
         <module>sidecar-service</module>
+        <module>system-info-test</module>
     </modules>
     <!-- 公司或者组织的唯一标志，并且配置时生成的路径也是由此生成， -->
     <groupId>com.zkna</groupId>
@@ -61,7 +65,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+<!--            <exclusions>-->
+<!--            <exclusion>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--            </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-jetty</artifactId>-->
+<!--        </dependency>-->
         <!--监控端点-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -79,6 +94,13 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-classic</artifactId>-->
+<!--            <version>1.3.0-alpha5</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
 
 

@@ -30,6 +30,7 @@ sidecar-nodejs:9052
 sidecar-py:9061
 service-config:9071
 service-zipkin: 9081
+service-systeminfo: 9091
  Fetching config from server at : http://localhost:9071/
 #Redis
 ./src/redis-server redis.conf
@@ -78,6 +79,22 @@ source ~/.bashrc
 docker run --rm -it inem0o/redis-trib create --replicas 1 192.168.247.132:8001 192.168.247.132:8002 192.168.247.132:8003 192.168.247.132:8004 192.168.247.132:8005 192.168.247.132:8006
 
 docker run -d --name jenkins -p 8080:8080 -v /home/jenkins:/home/jenkins jenkins/jenkins:lts
+
+https://github.com/Groundhog-Chen/vue-material-admin.git
+
+imagesid=`docker images|grep -i docker-test|awk '{print $3}'`
+project=/root/.jenkins/workspace/Docker
+if ! -n "$imagesid";then
+   echo $imagesid "is null"
+else
+    docker rmi $imagesid -f
+fi
+cd $project
+docker build -t docker-test .
+if docker ps -a|grep -i docker;then
+   docker rm -f docker
+fi
+docker run -it -d -p 8099:8080 --name docker docker-test
 
 #### 参与贡献
 1.  Fork 本仓库
